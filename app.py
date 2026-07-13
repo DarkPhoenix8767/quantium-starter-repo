@@ -3,9 +3,12 @@ import plotly.graph_objects as go
 import pandas as pd
 
 app = Dash(__name__)
+server = app.server
 
 # Read CSV file
-df = pd.read_csv("quantium-starter-repo/output.csv")
+df = pd.read_csv(
+    r"C:\Users\james\OneDrive\Documents\Programming\Python\quantium-starter-repo\output.csv"
+)
 
 # Convert columns
 df["Sales"] = pd.to_numeric(df["Sales"])
@@ -87,6 +90,7 @@ app.layout = html.Div(
                 )
 
             ],
+            id="header",
             style={
                 "padding": "20px",
                 "textAlign": "center",
@@ -219,4 +223,4 @@ def update_chart(region):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run_server(debug=False)
